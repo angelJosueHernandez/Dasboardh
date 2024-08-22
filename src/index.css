@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+/* Personalizar scrollbar para que sea invisible */
+.scrollbar-hide::-webkit-scrollbar {
+    width: 0; /* Ancho 0 hace que la scrollbar sea invisible */
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
