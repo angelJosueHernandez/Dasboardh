@@ -1,0 +1,35 @@
+
+/*--------- Diseño de Tablas -------------------*/
+.tabla{
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    margin-top: 10px;
+}
+.tabla thead tr {
+    background:#DF013A;
+    /*border: 1px solid #ddd;*/
+    /*font-weight: bold;*/
+    text-align: center;
+    color: #fff;
+}
+.tabla tbody td{
+    text-align: center;
+}
+.tabla th,
+.tabla td{
+    padding: 5px ;
+    font-size: 14px;
+}
+.tabla tbody tr{
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+.tabla tbody tr:hover{
+    background: #F5A9BC;
+}
+.tabla tbody tr:last-of-type{
+    border-bottom: 2px solid #DF013A;
+}

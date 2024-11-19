@@ -28,14 +28,29 @@ const Sidebar = () => {
     } else if (path.startsWith("/Chart")) {
       setSelected("projects");
       setShowSubMenu(false); // Ocultar submenú si se selecciona algo fuera de él
+    } else if (path.startsWith("/Citas")) {
+      setSelected("Citas");
+      setShowSubMenu(true);
+    } else if (path.startsWith("/ContratacionAmbulancias")) {
+      setSelected("ContratacionAmbulancias");
+      setShowSubMenu(true);
     } else if (path.startsWith("/Emergencia")) {
       setSelected("Emergencia");
       setShowSubMenu(true);
-    } else if (path.startsWith("/submenu2")) {
-      setSelected("submenu2");
+    } else if (path.startsWith("/Donaciones")) {
+      setSelected("Donaciones");
       setShowSubMenu(true);
-    } else if (path.startsWith("/Reports")) {
-      setSelected("reports");
+    } else if (path.startsWith("/HistorialRegistrado")) {
+      setSelected("HistorialRegistrado");
+      setShowSubMenu(true);
+    } else if (path.startsWith("/PersonalRegistrado")) {
+      setSelected("PersonalRegistrado");
+      setShowSubMenu(false); // Ocultar submenú si se selecciona algo fuera de él
+    } else if (path.startsWith("/SuministrosMedicos")) {
+      setSelected("SuministrosMedicos");
+      setShowSubMenu(false); // Ocultar submenú si se selecciona algo fuera de él
+    } else if (path.startsWith("/UsuariosRegistrados")) {
+      setSelected("UsuariosRegistrados");
       setShowSubMenu(false); // Ocultar submenú si se selecciona algo fuera de él
     }
   }, [location]);
@@ -120,12 +135,48 @@ const Sidebar = () => {
                 
                 <span className="flex items-center gap-4">
                   <img src="https://img.icons8.com/?size=100&id=blWgRcjh6QGb&format=png&color=000000" className="w-8 h-8" />
-                  Menu   {showSubMenu ? <RiArrowUpSLine className="text-white" /> : <RiArrowDownSLine  />}
+                  Servicios   {showSubMenu ? <RiArrowUpSLine className="text-white" /> : <RiArrowDownSLine  />}
                 </span>
               
               </button>
               {showSubMenu && (
                 <div className="pl-4 mt-2 flex flex-col gap-2">
+                  <NavLink
+                    to="/Citas"
+                    onClick={() => handleSubmenuSelect("Citas")}
+                    className={`font-bold flex items-center py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
+                      selected === "Citas"
+                        ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5 gap-3"
+                        : "text-white hover:bg-red-800 gap-3"
+                    }`}
+                  >
+                    <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                    Citas
+                  </NavLink>
+                  <NavLink
+                    to="/ContratacionAmbulancias"
+                    onClick={() => handleSubmenuSelect("ContratacionAmbulancias")}
+                    className={`font-bold flex items-center py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
+                      selected === "ContratacionAmbulancias"
+                        ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5 gap-3"
+                        : "text-white hover:bg-red-800 gap-3"
+                    }`}
+                  >
+                    <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                    Contrataciones
+                  </NavLink>
+                  <NavLink
+                    to="/Donaciones"
+                    onClick={() => handleSubmenuSelect("Donaciones")}
+                    className={`font-bold flex items-center py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
+                      selected === "Donaciones"
+                        ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5 gap-3"
+                        : "text-white hover:bg-red-800 gap-3"
+                    }`}
+                  >
+                    <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                    Donaciones
+                  </NavLink>
                   <NavLink
                     to="/Emergencia"
                     onClick={() => handleSubmenuSelect("Emergencia")}
@@ -135,59 +186,59 @@ const Sidebar = () => {
                         : "text-white hover:bg-red-800 gap-3"
                     }`}
                   >
-                    <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
-                    Submenú 1
+                       <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                    Emergencias
                   </NavLink>
                   <NavLink
-                    to="/submenu2"
-                    onClick={() => handleSubmenuSelect("submenu2")}
+                    to="/HistorialRegistrado"
+                    onClick={() => handleSubmenuSelect("HistorialRegistrado")}
                     className={`font-bold flex items-center py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
-                      selected === "submenu2"
+                      selected === "HistorialRegistrado"
                         ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5 gap-3"
                         : "text-white hover:bg-red-800 gap-3"
                     }`}
                   >
                        <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
-                    Submenú 2
+                    Historiales
                   </NavLink>
                 </div>
               )}
             </div>
             <NavLink
-              to="/Reports"
-              onClick={() => handleSelect("reports")}
+              to="/PersonalRegistrado"
+              onClick={() => handleSelect("PersonalRegistrado")}
               className={`font-bold flex items-center gap-4 py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
-                selected === "reports"
+                selected === "PersonalRegistrado"
                   ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5"
                   : "text-white hover:bg-red-800"
               }`}
             >
               <img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />
-              Reports
+              Personal
             </NavLink>
             <NavLink
-              to="/Reports"
-              onClick={() => handleSelect("reports")}
+              to="/SuministrosMedicos"
+              onClick={() => handleSelect("SuministrosMedicos")}
               className={`font-bold flex items-center gap-4 py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
-                selected === "reports"
+                selected === "SuministrosMedicos"
                   ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5"
                   : "text-white hover:bg-red-800"
               }`}
             >
               <img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />
-              Reports
+              Suministros
             </NavLink>
             <NavLink
-              to="/Reports"
-              onClick={() => handleSelect("reports")}
+              to="/UsuariosRegistrados"
+              onClick={() => handleSelect("UsuariosRegistrados")}
               className={`font-bold flex items-center gap-4 py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
-                selected === "reports"
+                selected === "UsuariosRegistrados"
                   ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5"
                   : "text-white hover:bg-red-800"
               }`}
             >
               <img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />
-              Reports
+              Usuarios
             </NavLink>
             <NavLink
               to="/Reports"
