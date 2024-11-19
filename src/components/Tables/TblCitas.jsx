@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react'
 import { Pagination, Input, DatePicker } from 'antd';
 import { FiSearch } from "react-icons/fi";
 import './Table.css'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const TblCitas = () => {
     const [citas,setCitas]=useState([]);
@@ -26,6 +28,7 @@ const TblCitas = () => {
           const response = await fetch(URLUser);
           const data = await response.json();
           setCitas(data);
+          
         };
     
         peticionGet();
@@ -36,6 +39,7 @@ const TblCitas = () => {
         return () => clearInterval(interval);
     }, []);
 
+    
     const filterItems = () => {
         return citas.filter(item => {
           const filterNombreLower = filterNombre ? filterNombre.toLowerCase() : '';
@@ -106,8 +110,10 @@ const TblCitas = () => {
         }
     };
 
+    AOS.init();
+
   return (
-    <div /*className='container_principal'*/ >
+    <div /*className='container_principal'*/ data-aos="fade-up" data-aos-duration="3000">
       {/*<h1 className='title_emergencias'>Registro de Citas</h1>
         <div className='contenedor_buscador'>
             <div className='contedor_search'>

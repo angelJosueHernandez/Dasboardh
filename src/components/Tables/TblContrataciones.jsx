@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
 import './Table.css'
 
+
 const TblContrataciones = () => {
     const [historial, setHistorial] = useState([]);
     const [filterDate, setFilterDate] = useState(null);
@@ -100,9 +101,11 @@ const TblContrataciones = () => {
         },
     ];
 
+    
+
     return (
-        <div className='container_principal'>
-            <h1 className='title_emergencias'>Registro de Contratacion de Ambulancias</h1>
+        <div /*className='container_principal'*/ >
+            {/*<h1 className='title_emergencias'>Registro de Contratacion de Ambulancias</h1>*/}
             
             <div>
                 <legend className='text-sm'>Filtros</legend>

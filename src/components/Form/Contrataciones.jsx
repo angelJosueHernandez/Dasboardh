@@ -1,52 +1,16 @@
 import React,{useState, useEffect} from 'react'
-import TblEmergencias from '../Tables/TblEmergencias'
+import TblContrataciones from '../Tables/TblContrataciones';
+import { Formik,Form,Field,ErrorMessage } from 'formik'
 import './Form.css'
 import './ModalEmergencias.css'
-import { Formik,Form,Field,ErrorMessage } from 'formik'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-export default function Emergencia() {
-  const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
-  const [newEmergency, setNewEmergency] = useState({}); // Estado para la nueva emergencia
+const Contrataciones = () => {
+    const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
+    const [newContratacion, setNewContratacion] = useState({}); // Estado para la nueva emergencia
 
-  const [tipoEmergencia,setTipoEmergencia]=useState([]);
-
-    const URLUser='https://api-beta-mocha-59.vercel.app/tipoEmergencia';
-
-    const peticionGet= async()=>{
-        const response= await fetch(URLUser)
-        const data= await response.json();
-        setTipoEmergencia(data) 
-    }
-    
-    useEffect(()=>{
-        peticionGet();
-    },[])
-
-    const [personal,setPersonal]=useState([]);
-
-    const URLPersonal='https://api-beta-mocha-59.vercel.app/personal';
-
-    const peticionGet2= async()=>{
-        const response= await fetch(URLPersonal)
-        const data= await response.json();
-        setPersonal(data) 
-    }
-    
-    useEffect(()=>{
-        peticionGet2();
-    },[])
-
-  const [formularioEnviado,cambiarFormularioEnviado]= useState(false);
-
-  const handleModalSubmit = () => {
-    console.log('Nueva emergencia:', newEmergency);
-    setShowModal(false);
-    setNewEmergency({});
-  };
-
-  AOS.init();
+    AOS.init();
   return (
     <div className="container_principal" data-aos="fade-up" data-aos-duration="3000">
       <h1 className="title_emergencias">Registro de Emergencias</h1>
@@ -59,7 +23,7 @@ export default function Emergencia() {
       </div>
 
       {/* Tabla */}
-      <TblEmergencias/>
+      <TblContrataciones/>
       {/* Modal */}
       {showModal && (
         <div className="modal">
@@ -325,3 +289,5 @@ export default function Emergencia() {
     </div>
   )
 }
+
+export default Contrataciones

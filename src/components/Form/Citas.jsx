@@ -2,10 +2,11 @@ import React,{useState, useEffect} from 'react'
 import TblCitas from '../Tables/TblCitas'
 import './Form.css'
 
+
 const Citas = () => {
   const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
   
-
+  
   return (
     <div className='container_principal'>
         <h1 className='title_emergencias'>Citas Registrados</h1>

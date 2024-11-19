@@ -5,7 +5,7 @@ import { FiSearch } from "react-icons/fi";
 import './Table.css'
 
 const TblSuministros = () => {
-  const [suministro, setSuministro] = useState([]);
+    const [suministro, setSuministro] = useState([]);
     const [filterNombre, setFilterNombre] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -56,8 +56,8 @@ const TblSuministros = () => {
     ];
 
     return (
-        <div className='container_principal'>
-            <h1 className='title_emergencias'>Registro de Donaciones</h1>
+        <div /*className='container_principal'*/>
+            {/*<h1 className='title_emergencias'>Registro de Donaciones</h1>*/}
             
             <div>
                 {currentItems.length === 0 ? (

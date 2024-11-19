@@ -56,7 +56,7 @@ const TblDonaciones = () => {
     ];
 
     return (
-        <div className='container_principal'>
+        <div className='container_principal' data-aos="fade-up" data-aos-duration="3000">
             <h1 className='title_emergencias'>Registro de Donaciones</h1>
             
             <div>

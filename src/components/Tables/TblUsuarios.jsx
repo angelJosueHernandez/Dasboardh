@@ -42,7 +42,7 @@ const TblUsuarios = () => {
 
 
   return (
-    <div className='container_principal'>
+    <div className='container_principal' data-aos="fade-up" data-aos-duration="3000">
         <h1 className='title_emergencias'>Usuarios Registrados</h1>
         <div className='contenedor_buscador'>
             {/*<div className='contedor_search'>

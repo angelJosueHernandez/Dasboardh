@@ -11,6 +11,9 @@ import TblHistorialMedico from '../Tables/TblHistorialMedico';
 import TblPersonal from '../Tables/TblPersonal';
 import TblSuministros from '../Tables/TblSuministros';
 import TblUsuarios from '../Tables/TblUsuarios';
+import Contrataciones from '../Form/Contrataciones';
+import Personal from '../Form/Personal';
+import Suministros from '../Form/Suministros';
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -19,11 +22,11 @@ export default function AppRoutes() {
         <Route path="/Chart" element={<Layout><Chart /></Layout>} />
         <Route path="/Emergencia" element={<Layout><Emergencia /></Layout>} />
         <Route path='/Citas' element={<Layout><Citas/></Layout>}/>
-        <Route path='/ContratacionAmbulancias' element={<Layout><TblContrataciones/></Layout>}/>
+        <Route path='/ContratacionAmbulancias' element={<Layout><Contrataciones/></Layout>}/>
         <Route path='/Donaciones' element={<Layout><TblDonaciones/></Layout>}/>
         <Route path='/HistorialRegistrado' element={<Layout><TblHistorialMedico/></Layout>}/>
-        <Route path='/PersonalRegistrado' element={<Layout><TblPersonal/></Layout>}/>
-        <Route path='/SuministrosMedicos' element={<Layout><TblSuministros/></Layout>}/>
+        <Route path='/PersonalRegistrado' element={<Layout><Personal/></Layout>}/>
+        <Route path='/SuministrosMedicos' element={<Layout><Suministros/></Layout>}/>
         <Route path='/UsuariosRegistrados' element={<Layout><TblUsuarios/></Layout>}/>
       </Routes>
     </BrowserRouter>
