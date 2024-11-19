@@ -103,19 +103,7 @@ const TblContrataciones = () => {
     return (
         <div className='container_principal'>
             <h1 className='title_emergencias'>Registro de Contratacion de Ambulancias</h1>
-            <div className='contenedor_buscador'>
-                <div className='contedor_search'>
-                    <FiSearch className='icon_search' />
-                    <Input
-                        className='btn_search'
-                        type="search"
-                        placeholder='Buscar por Nombre'
-                        value={filterNombre}
-                        onChange={e => setFilterNombre(e.target.value)}
-                        allowClear
-                    />
-                </div>
-            </div>
+            
             <div>
                 <legend className='text-sm'>Filtros</legend>
                 <DatePicker
