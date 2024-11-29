@@ -9,7 +9,7 @@ const TblDonaciones = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    const URLDonaciones = 'http://localhost:3000/donaciones';
+    const URLDonaciones = 'https://api-beta-mocha-59.vercel.app/donaciones';
 
     useEffect(() => {
         const peticionGetDonaciones = async () => {

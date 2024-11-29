@@ -10,7 +10,7 @@ const TblSuministros = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    const URLSuministros = 'http://localhost:3000/Suministro';
+    const URLSuministros = 'https://api-beta-mocha-59.vercel.app/Suministro';
 
     useEffect(() => {
         const peticionGetSuministros = async () => {

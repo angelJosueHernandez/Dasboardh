@@ -15,7 +15,7 @@ import {
 import servicios from '../assets/Sidebar/servicios.png'
 import home from '../assets/Sidebar/hospital.png'
 import '../components/Siderbar.css'
-import logo from '../assets/img/logo2.png'
+import logo from '../assets/img/logo4.png'
 import suministros from '../assets/Sidebar/suministros2.png'
 import usuarios from '../assets/Sidebar/usuarios.png'
 import personal from '../assets/Sidebar/personal.png'

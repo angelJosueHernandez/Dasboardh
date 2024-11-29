@@ -19,8 +19,8 @@ const TblHistorialMedico = () => {
     const [filterNombre, setFilterNombre] = useState('');
     const [filterAntecedente, setFilterAntecedente] = useState('');
 
-    const URLUser = 'http://localhost:3000/historialMedico';
-    const URLAntecedentes = 'http://localhost:3000/Antecedente';
+    const URLUser = 'https://api-beta-mocha-59.vercel.app/historialMedico';
+    const URLAntecedentes = 'https://api-beta-mocha-59.vercel.app/Antecedente';
 
     useEffect(() => {
         const peticionGetHistorial = async () => {
