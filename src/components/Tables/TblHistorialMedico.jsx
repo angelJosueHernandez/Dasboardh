@@ -4,6 +4,7 @@ import { Pagination, DatePicker, Input, Select } from 'antd';
 import { Cascader } from 'antd';
 import './Table.css'
 
+
 const { Option } = Select;
 
 const TblHistorialMedico = () => {
@@ -122,10 +123,11 @@ const TblHistorialMedico = () => {
             ),
         },
     ];
+
+    
     return (
-        <div className='container_principal'>
-            <h1 className='title_emergencias'>Historiales Médicos</h1>
-            <div>
+        <div >
+            <div className='filtros'>
                 <legend className='text-sm'>Filtros</legend>
                 <Input
                     placeholder="Buscar por Nombre"

@@ -12,18 +12,32 @@ import {
   RiArrowUpSLine,
   
 } from "react-icons/ri";
+import servicios from '../assets/Sidebar/servicios.png'
+import home from '../assets/Sidebar/hospital.png'
+import '../components/Siderbar.css'
+import logo from '../assets/img/logo2.png'
+import suministros from '../assets/Sidebar/suministros2.png'
+import usuarios from '../assets/Sidebar/usuarios.png'
+import personal from '../assets/Sidebar/personal.png'
 
 const Sidebar = () => {
   const location = useLocation(); // Obtiene la ruta actual
   const [showMenu, setShowMenu] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [selected, setSelected] = useState(null); // Maneja la selección
+  const [userName, setUserName] = useState(""); // Estado para almacenar el nombre del usuario
+
+  // Recuperar el nombre del usuario al montar el componente
+  useEffect(() => {
+    const storedUserName = localStorage.getItem('userName'); // Recupera el nombre del usuario del localStorage
+    setUserName(storedUserName || "Usuario Anónimo"); // Si no hay nombre, usa un valor predeterminado
+  }, []);
 
   // Efecto para manejar la selección basada en la ruta actual
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/") {
-      setSelected("home");
+    if (path === "/Home") {
+      setSelected("Home");
       setShowSubMenu(false); // Ocultar submenú si se selecciona algo fuera de él
     } else if (path.startsWith("/Chart")) {
       setSelected("projects");
@@ -86,29 +100,30 @@ const Sidebar = () => {
         {/* Profile */}
         <div className="flex flex-col items-center justify-center p-8 gap-2 h-[30vh]">
           <img
-            src="https://img.freepik.com/foto-gratis/anciano-sonriente-gafas_23-2148740051.jpg"
+            src={logo}
             className="w-20 h-20 object-cover rounded-full ring-2 ring-red-300"
           />
-          <h1 className="text-xl text-white font-bold">Jorge Luis Trejo</h1>
+          <h1 className="text-xl text-white font-bold">{userName}</h1>
          
         </div>
         {/* Nav */}
         <div className="bg-red-600 p-8 rounded-tr-[100px] h-[70vh] overflow-y-scroll scrollbar-hide flex flex-col justify-between gap-8">
           <nav className="flex flex-col gap-8">
             <NavLink
-              to="/"
+              to="/Home"
               exact
-              onClick={() => handleSelect("home")}
+              onClick={() => handleSelect("Home")}
               className={` font-bold flex items-center gap-4 py-[3px] px-3 rounded-xl transition-all duration-800  w-[540px] ${
                 selected === "home"
                   ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5 "
                   : "text-white hover:bg-red-800"
               }`}
             >
-              <img src="https://img.icons8.com/?size=100&id=hmZnke9jb8oq&format=png&color=000000" className="w-8 h-8" />
+              <img src={home} alt="" className="icon_home"/>
+              {/*<img src="https://img.icons8.com/?size=100&id=hmZnke9jb8oq&format=png&color=000000" className="w-8 h-8" />*/}
               Home
             </NavLink>
-            <NavLink
+            {/*<NavLink
               to="/Chart"
               onClick={() => handleSelect("projects")}
               className={` font-bold flex items-center gap-4 py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
@@ -119,7 +134,7 @@ const Sidebar = () => {
             >
               <img src="https://img.icons8.com/?size=100&id=aR2Ar4o65ts7&format=png&color=000000" className="w-8 h-8" />
               Projects
-            </NavLink>
+            </NavLink>*/}
             {/* Submenu */}
             <div>
           
@@ -134,7 +149,8 @@ const Sidebar = () => {
               >
                 
                 <span className="flex items-center gap-4">
-                  <img src="https://img.icons8.com/?size=100&id=blWgRcjh6QGb&format=png&color=000000" className="w-8 h-8" />
+                  <img src={servicios} alt="" className="icon_home"/>
+                  {/*<img src="https://img.icons8.com/?size=100&id=blWgRcjh6QGb&format=png&color=000000" className="w-8 h-8" />*/}
                   Servicios   {showSubMenu ? <RiArrowUpSLine className="text-white" /> : <RiArrowDownSLine  />}
                 </span>
               
@@ -213,7 +229,8 @@ const Sidebar = () => {
                   : "text-white hover:bg-red-800"
               }`}
             >
-              <img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />
+              <img src={personal} alt="" className="icon_home"/>
+              {/*<img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />*/}
               Personal
             </NavLink>
             <NavLink
@@ -225,7 +242,8 @@ const Sidebar = () => {
                   : "text-white hover:bg-red-800"
               }`}
             >
-              <img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />
+              <img src={suministros} alt="" className="icon_home"/>
+              {/*<img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />*/}
               Suministros
             </NavLink>
             <NavLink
@@ -237,21 +255,11 @@ const Sidebar = () => {
                   : "text-white hover:bg-red-800"
               }`}
             >
-              <img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />
+              <img src={usuarios} alt="" className="icon_home"/>
+              {/*<img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />*/}
               Usuarios
             </NavLink>
-            <NavLink
-              to="/Reports"
-              onClick={() => handleSelect("reports")}
-              className={`font-bold flex items-center gap-4 py-[3px] px-3 rounded-xl transition-all duration-800 w-[540px] ${
-                selected === "reports"
-                  ? "bg-red-100 text-red-700 shadow-lg transform translate-x-5"
-                  : "text-white hover:bg-red-800"
-              }`}
-            >
-              <img src="https://img.icons8.com/?size=100&id=103978&format=png&color=000000" className="w-8 h-8" />
-              Reports
-            </NavLink>
+            
           </nav>
           <div className="bg-red-800 text-white p-4 rounded-xl">
             <p className="text-red-300">Having troubles?</p>

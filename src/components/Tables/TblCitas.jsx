@@ -114,13 +114,6 @@ const TblCitas = () => {
 
   return (
     <div /*className='container_principal'*/ data-aos="fade-up" data-aos-duration="3000">
-      {/*<h1 className='title_emergencias'>Registro de Citas</h1>
-        <div className='contenedor_buscador'>
-            <div className='contedor_search'>
-                <FiSearch  className='icon_search'/>
-                <input className='btn_search' type="search" placeholder='Buscar'/>
-            </div>
-        </div>*/}
         <div>
             {currentItems.length === 0 ? (
             <div>

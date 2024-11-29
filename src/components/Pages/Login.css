@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Contenedor principal */
+.form-container_login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../assets/img/2.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: "Host Grotesk", sans-serif;
+    
+}
+
+.form-container_login .bienvenida{
+  font-weight: 800;
+  font-size: 30px;
+}
+  /* Contenedor de la animación Lottie */
+.form-container_login .img-container {
+    position: relative;
+    width: 400px;
+    
+    background-image: url('../../assets/img/shape6.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Para evitar que el degradado se salga del contenedor */
+}
+  
+.img-container .imagen{
+    width: 250px;
+    height: 350px;
+    margin-left: 50px;
+}
+  
+  /* Superposición con efecto de difuminado */
+.form-container_login .img-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%; /* Ajusta la altura del difuminado */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none; /* Para que no bloquee interacciones */
+}
+  
+  /*.lottie-animation {
+    width: 400px;
+    height: 400px;
+  }*/
+  
+  /* Contenedor principal */
+.form-container_login .login-container {
+    width: 400px;
+    /*margin: 0 auto;*/
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    /*box-shadow: 0 4px 6px 4px rgba(0, 0, 0, 0.1);*/
+}
+    
+    /* Título */
+.form-container_login .login-container h2 {
+    text-align: center;
+    color: #000000;
+}
+    
+    /* Grupo de formulario */
+.login-container .form-group {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    margin-top: 30px;
+}
+    
+    /* Campos de entrada */
+.login-container .form-group input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(18, 18, 18, 0.1);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #000000;
+    padding: 20px 45px 20px 20px;
+}
+    
+.login-container .form-group input::placeholder{
+    color: #000000;
+}
+  
+.login-container .form-group .icon{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    translate: 0 -50%;
+    font-size: 16px;
+    color: #000000;
+}
+  
+    /* Estilo para el icono de mostrar/ocultar contraseña */
+    .toggle-icon {
+      cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+      color: #aaa;
+      transition: color 0.3s;
+    }
+  
+    .toggle-icon:hover {
+      color: #555; /* Cambia el color al pasar el cursor */
+    }
+  
+    /* Contenedor principal de olvido de contraseña*/
+  .forgot-password {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  
+  .forgot-password a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+    transition: color 0.3s ease;
+  }
+  
+  .forgot-password a:hover {
+    color: #d40d0d;
+  }
+  
+    /* Botón de enviar */
+.login-container .submit-button {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f40303 ;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+    
+    /* Hover en el botón */
+.login-container .submit-button:hover {
+    background-color: #d40d0d;
+}
+    
+    /* Mensaje de error */
+.login-container .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+}

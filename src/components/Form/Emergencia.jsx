@@ -49,7 +49,7 @@ export default function Emergencia() {
   AOS.init();
   return (
     <div className="container_principal" data-aos="fade-up" data-aos-duration="3000">
-      <h1 className="title_emergencias">Registro de Emergencias</h1>
+      <h1 className="title_emergencias">Emergencias Registradas</h1>
       
       {/* Botón para abrir el modal */}
       <div style={{ textAlign: 'right', marginBottom: '10px' }}>
@@ -165,7 +165,7 @@ export default function Emergencia() {
             {({errors})=>(
                 <Form /*className='form_Emergencias'*/ >
                 <div className='form_Grid_emergencia'>
-                    <div className='sub-tituloE'><h1>Registrar Emergencia</h1></div>
+                    <div className='sub-tituloE'><h1>Registro de Emergencias</h1></div>
                     <div className='grup-input'>
                       <div><label htmlFor="" className='label-name'>Folio:</label></div>
                       <div><Field
@@ -307,7 +307,7 @@ export default function Emergencia() {
                           )}/>
                         </div>
                     </div>
-                    <div className='conte-registrarHM'>
+                    <div className='conte-registrarE'>
                         <input className='btn_submit' type="submit" value="Registrar" />
                         <button className='btn_cancel' type="button" onClick={() => setShowModal(false)}>Cancelar</button>
                         

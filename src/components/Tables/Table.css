@@ -33,3 +33,32 @@
 .tabla tbody tr:last-of-type{
     border-bottom: 2px solid #DF013A;
 }
+
+.btn_mostrarH{
+    background: #DF013A;
+    width: 100px;
+    height: 25px;
+    border-radius: 4px;
+}
+.btn_mostrarH:hover{
+    background: #960026
+}
+.verMas{
+    color: #fff;
+}
+
+.textLe{
+    margin: 15px;
+    color: rgb(0, 132, 255);
+    font-size: 11px;
+    text-align: center;
+}
+.filtros .data{
+text-align: center;
+}
+.filtros .Input{
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+    margin-bottom: 5px;
+}

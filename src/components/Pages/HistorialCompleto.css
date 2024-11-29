@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.contendor_historial_completo{
+    margin-top: 50px;
+    
+    display: grid;
+    /*justify-items: center;*/
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    font-family: "Host Grotesk", sans-serif;
+}
+.datos_personales{
+    width: 350px;
+    height: 450px;
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 10px;
+    padding: 15px;
+}
+.informacion_Personal{
+    grid-column: span 2;
+    text-align: center;
+    color: #FF0040;
+    font-weight: 800;
+    font-size: 18px;
+}
+/*----------------------- Antecedentes Patologicos ----------------------*/
+.titulo_antecedente{
+    text-align: center;
+    color: #FF0040;
+    font-weight: 800;
+    font-size: 18px;
+}
+.contenedor_antecedentes{
+    width: 620px;
+    height: 450px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.grupo_antecedente{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+.nuevo_antecedente{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+.contenedor_antecedentes .contendor_btnAntecedente{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.contenedor_antecedentes .btn_antecedente{
+    width: 60%;
+    height: 40px;
+    background: #DF013A;
+    border-radius: 5px;
+    margin-top: 5px;
+    color: #fff;
+}
+.nuevo_antecedente p{
+    margin-left: 8px;
+}
+/*-------------------- Expedientes -------------------*/
+.contenedor_expedientes{
+    width: 610px;
+    height: 200px;
+    
+    border: solid 1px #c5c1c1;
+    margin-top: 10px;
+}
+.grupo_expediente{
+    display: flex;
+    justify-content: center;
+}
+/*----------------------- Alergias a Medicamentos ---------------------*/
+.contenedor_alergias{
+    margin-top: 20px;
+    width: 350px;
+    height: 200px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+.contenedor_alergias .titulo_alergias{
+    text-align: center;
+    color: #FF0040;
+    font-weight: 800;
+    font-size: 18px;
+}
+.form_nuevo{
+    width: 260px;
+    height: 160px;
+    background: #ffffff;
+    border: solid 1px #c5c1c1;
+
+}
+.nuevo-text{
+    width: 90%;
+    background: rgb(224, 224, 224);
+    margin-top: 8px;
+    margin-left: 11px;
+    outline: none;
+    border-radius: 5px;
+    height: 30px;
+}
+.contenedor_btn{
+    margin-top: 8px;
+    display: flex;
+    width: 100%;
+}
+.btn_guardar{
+    width: 80px;
+    height: 25px;
+    background: rgb(0, 7, 61);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    
+}
+.btn_cancelar{
+    width: 80px;
+    height: 25px;
+    background: #DF013A;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    margin-left: 5px;
+}

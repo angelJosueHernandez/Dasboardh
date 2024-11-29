@@ -5,8 +5,11 @@ import './Form.css'
 import './ModalEmergencias.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useNavigate } from 'react-router-dom';
 
 const Contrataciones = () => {
+  const navigate = useNavigate(); 
+
     const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
     const [newContratacion, setNewContratacion] = useState({}); // Estado para la nueva emergencia
 
@@ -17,7 +20,7 @@ const Contrataciones = () => {
       
       {/* Botón para abrir el modal */}
       <div style={{ textAlign: 'right', marginBottom: '10px' }}>
-        <button className="btn_new_emergency" onClick={() => setShowModal(true)}>
+        <button className="btn_new_emergency" onClick={() => navigate('/RegistroContrataciones')}>
           Nueva Emergencia
         </button>
       </div>

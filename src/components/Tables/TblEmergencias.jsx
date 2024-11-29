@@ -46,13 +46,6 @@ const TblEmergencias = () => {
     
   return (
     <div >
-        {/*<h1 className='title_emergencias'>Registro de Emergencias</h1>*/}
-        {/*<div className='contenedor_buscador'>
-           {<div className='contedor_search'>
-                <FiSearch  className='icon_search'/>
-                <input className='btn_search' type="search" placeholder='Buscar'/>
-            </div>}
-        </div>*/}
         <div>
         {currentItems.length === 0 ? (
           <div className="textLe">No se encontraron registros</div>

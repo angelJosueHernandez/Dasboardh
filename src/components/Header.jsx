@@ -3,6 +3,7 @@ import { RiSearch2Line, RiCloseLine } from "react-icons/ri";
 import { AiOutlineUser, AiOutlineSetting, AiOutlineMail, AiOutlineLogout } from "react-icons/ai";
 import Breadcrumbs from "./Breadcrumbs/Breadcrumbs";
 import NotFound from '../img/notfound.png';
+import { RiUser3Fill } from "react-icons/ri";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -10,6 +11,13 @@ const Header = () => {
   const [showNoResults, setShowNoResults] = useState(false);
   const [showMenu, setShowMenu] = useState(false); // Controla el botón del menú
   const [showSearchModal, setShowSearchModal] = useState(false); // Controla el modal de búsqueda en responsive
+  const [userName, setUserName] = useState(localStorage.getItem('userName'));
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn'); // Elimina el estado de login
+    localStorage.removeItem('userName'); // Elimina el nombre del usuario
+    window.location.href = '/'; // Redirige al login
+  };
 
   const searchRef = useRef(null);
   const menuRef = useRef(null);
@@ -159,12 +167,13 @@ const Header = () => {
               className="ml-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition"
               onClick={() => setShowMenu(!showMenu)}
             >
-              <AiOutlineUser className="text-gray-400" />
+              
+              <RiUser3Fill className="text-green-500 " />
             </button>
             {showMenu && (
               <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
                 <p className="px-4 py-2 text-sm text-gray-700 flex items-center">
-                  <AiOutlineUser className="mr-2 text-gray-500" /> 👋 Hey, Adela
+                  <AiOutlineUser className="mr-2 text-gray-500" /> 👋 Hey, {userName}
                 </p>
                 <hr />
                 <a
@@ -182,8 +191,9 @@ const Header = () => {
                 <a
                   href="#"
                   className="block px-4 py-2 text-sm text-red-700 hover:bg-red-100 flex items-center"
+                  onClick={handleLogout}
                 >
-                  <AiOutlineLogout className="mr-2 text-red-500" /> Log Out
+                  <AiOutlineLogout className="mr-2 text-red-500" /> Cerrar Sesión
                 </a>
               </div>
             )}

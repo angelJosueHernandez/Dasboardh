@@ -156,7 +156,7 @@ const Personal = () => {
                 }}
             >{({values,errors,touched,handleSubmit,handleChange,handleBlur})=>(
                 <Form className='form-personal' >
-                    <div className='form-grid'>
+                    <div className='form_Grid_Personal'>
                         <div className='title_form'>
                             <h1>Registro de Personal</h1>
                         </div>
@@ -358,7 +358,7 @@ const Personal = () => {
                             <div><label htmlFor="" className='label-name'>Cargo:</label></div>
                             <div><input type="text" name="" id="" className='input-text' /></div>
                         </div>*/}
-                        <div className='conte-registrar'>
+                        <div className='conte-registrarP'>
                             <input className='btn_submit' type="submit" value="Registrar" />
                             <button className='btn_cancel' type="button" onClick={() => setShowModal(false)}>Cancelar</button>
                         </div>

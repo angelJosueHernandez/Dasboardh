@@ -112,7 +112,6 @@ const TblPersonal = () => {
 
     return (
         <div /*className='container_principal'*/>
-            {/*<h1 className='title_emergencias'>Personal Registrado</h1>*/}
             <div>
                 {currentItems.length === 0 ? (
                 <div className="textLe">No se encontraron registros</div>
