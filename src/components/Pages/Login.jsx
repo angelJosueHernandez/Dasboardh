@@ -49,7 +49,7 @@ const Login = () => {
         // Si no hay errores, manejar la autenticación
         if (Object.keys(newErrors).length === 0) {
             try {
-                const response = await fetch('http://localhost:3000/personal/authenticatePersonal', {
+                const response = await fetch('https://api-beta-mocha-59.vercel.app/personal/authenticatePersonal', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

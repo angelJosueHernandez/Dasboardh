@@ -41,12 +41,54 @@
     border-radius: 4px;
 }
 .btn_mostrarH:hover{
-    background: #960026
+    background: #960026;
 }
 .verMas{
     color: #fff;
 }
+/*--------------------- boton de estado de citas---------------------*/
+.btn_mostrarC{
+    width: 100px;
+    
+}
+.btn_mostrarC .btn_estado_cita{
+    background: #DF013A;
+    width: 100%;
+    height: 25px;
+    border-radius: 4px;
+    color: #fff;
+}
 
+.btn_mostrarC .btn_estado_cita:hover{
+    background: #960026;
+}
+
+/*---------------botones de tabla personal-----------------*/
+.contenedor_btn .btn_editar{
+    background: #DF013A;
+    width: 30px;
+    height: 25px;
+    border-radius: 4px;
+}
+.contenedor_btn .btn_editar:hover{
+    background: #960026;
+}
+.contenedor_btn .icon_editar{
+    margin-left: 30%;
+    color: #fff;
+}
+.contenedor_btn .btn_eliminar{
+    background: #DF013A;
+    margin-left: 5%;
+    width: 80px;
+    height: 25px;
+    color: #fff;
+    border-radius: 4px;
+}
+.contenedor_btn .btn_eliminar:hover{
+    background: #960026;
+}
+/*--------------------------------------------------*/
 .textLe{
     margin: 15px;
     color: rgb(0, 132, 255);

@@ -78,6 +78,7 @@ const TblCitas = () => {
           render: (text, record) => (
             <div className="btn_mostrarC">
               <button
+                className='btn_estado_cita'
                 onClick={() => atenderCita(record.ID_Cita, record.estado)}
                 type="button"
               >

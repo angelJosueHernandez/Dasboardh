@@ -3,6 +3,7 @@ import { Pagination, Input, DatePicker } from 'antd';
 import { FiSearch } from "react-icons/fi";
 import { FaUserEdit, FaTimes } from "react-icons/fa";
 import './Table.css'
+import '../Form/ModalPersonal.css'
 
 const TblPersonal = () => {
     const [personal, setPersonal] = useState([]);
@@ -143,7 +144,7 @@ const TblPersonal = () => {
                                 <td>{item.Id_Cargo}</td>
                                 <td>
                                     <div className='contenedor_btn'>
-                                        <button className='btn_editar' type="button" onClick={() => handleEdit(item.ID_Asociado)}><FaUserEdit /></button>
+                                        <button className='btn_editar' type="button" onClick={() => handleEdit(item.ID_Asociado)}><FaUserEdit className='icon_editar'/></button>
                                         <button
                                             className='btn_eliminar'
                                             onClick={() => atenderCita(item.ID_Asociado, item.estado_Usuario)}
@@ -181,22 +182,19 @@ const TblPersonal = () => {
                         <form className={`modal_editar ${modalOpen ? 'open-menu' : ''}`} id='modalEditar' onSubmit={handleSubmit}>
                             {selectedPersonal && (
                                 <>
-                                    <div className='btn_group'>
-                                        <label htmlFor="">Nombre</label>
-                                        <input className='input_Modal' type="text" value={selectedPersonal.nombre} readOnly />
-                                    </div>
-                                    <div className='btn_group'>
-                                        <label htmlFor="">Apellido Paterno</label>
-                                        <input className='input_Modal' type="text" value={selectedPersonal.apellidoP} readOnly />
-                                    </div>
-                                    <div className='btn_group'>
-                                        <label htmlFor="">Apellido Materno</label>
-                                        <input className='input_Modal' type="text" value={selectedPersonal.apellidoM} readOnly />
-                                    </div>
+                                    
+                                    <label htmlFor="">Nombre</label>
+                                    <input className='input_Modal' type="text" value={selectedPersonal.nombre} readOnly />
+                                    
+                                    
+                                    <label htmlFor="">Apellido Paterno</label>
+                                    <input className='input_Modal' type="text" value={selectedPersonal.apellidoP} readOnly />
+                                    
+                                    
+                                    <label htmlFor="">Apellido Materno</label>
+                                    <input className='input_Modal' type="text" value={selectedPersonal.apellidoM} readOnly />
                                 </>
                             )}
-
-                            <div className='btn_group'>
                                 <label htmlFor="">Cargo</label>
                                 <select className='input_Modal' value={selectedCargo} onChange={handleCargoChange}>
                                     {cargo.map((cargos) => (
@@ -206,11 +204,10 @@ const TblPersonal = () => {
                                         </option>
                                     ))}
                                 </select>
-                            </div>
-                            <div className='contenedor_enviar'>
+                            <div className='btns_editar_personal'>
                                 <div className="btn-group">
-                                    <button className='btn_enviar' type="submit">Actualizar</button>
-                                    <button className='btnCancelar' type="button" onClick={handleCancel}>Cancelar</button>
+                                    <button className='btn_actualizar_personal' type="submit">Actualizar</button>
+                                    <button className='btn_cancelar_personal' type="button" onClick={handleCancel}>Cancelar</button>
                                 </div>
                             </div>
                         </form>
