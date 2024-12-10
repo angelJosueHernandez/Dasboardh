@@ -19,6 +19,7 @@ import HistorialMedico from '../Form/HistorialMedico';
 import RegistroHistorial from '../Pages/RegistroHistorial';
 import RegistroContrataciones from '../Pages/RegistroContrataciones';
 import Login from '../Pages/Login';
+import NuevaContratacion from '../Form/NuevaContratacion';
 
 
 const PrivateRoute = ({ children }) => {
@@ -40,6 +41,7 @@ export default function AppRoutes() {
         <Route path="/Home" element={<PrivateRoute><Layout><Home/></Layout></PrivateRoute>} />
         <Route path="/Emergencia" element={<PrivateRoute><Layout><Emergencia /></Layout></PrivateRoute>} />
         <Route path='/Citas' element={<PrivateRoute><Layout><Citas/></Layout></PrivateRoute>}/>
+        <Route path='/NuevaContratacion' element={<PrivateRoute><Layout><NuevaContratacion/></Layout></PrivateRoute>}/>
         <Route path='/ContratacionAmbulancias' element={<PrivateRoute><Layout><Contrataciones/></Layout></PrivateRoute>}/>
         <Route path='/ContratacionAmbulancias/:ID_Contratacion' element={<PrivateRoute><Layout><RegistroContrataciones/></Layout></PrivateRoute>}/>
         <Route path='/Donaciones' element={<PrivateRoute><Layout><TblDonaciones/></Layout></PrivateRoute>}/>

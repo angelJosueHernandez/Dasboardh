@@ -16,9 +16,14 @@ import servicios from '../assets/Sidebar/servicios.png'
 import home from '../assets/Sidebar/hospital.png'
 import '../components/Siderbar.css'
 import logo from '../assets/img/logo4.png'
-import suministros from '../assets/Sidebar/suministros2.png'
+import suministros from '../assets/Sidebar/suministros.png'
 import usuarios from '../assets/Sidebar/usuarios.png'
 import personal from '../assets/Sidebar/personal.png'
+import citas from '../assets/Sidebar/calendario.png'
+import contratacion from '../assets/Sidebar/ambulancia.png'
+import donaciones from '../assets/Sidebar/donacion.png'
+import emergencias from '../assets/Sidebar/emergencia.png'
+import historiales from '../assets/Sidebar/historialMedico.png'
 
 const Sidebar = () => {
   const location = useLocation(); // Obtiene la ruta actual
@@ -166,7 +171,7 @@ const Sidebar = () => {
                         : "text-white hover:bg-red-800 gap-3"
                     }`}
                   >
-                    <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                    <img src={citas} className="w-6 h-6" />
                     Citas
                   </NavLink>
                   <NavLink
@@ -178,7 +183,7 @@ const Sidebar = () => {
                         : "text-white hover:bg-red-800 gap-3"
                     }`}
                   >
-                    <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                    <img src={contratacion} className="w-6 h-6" />
                     Contrataciones
                   </NavLink>
                   <NavLink
@@ -190,7 +195,7 @@ const Sidebar = () => {
                         : "text-white hover:bg-red-800 gap-3"
                     }`}
                   >
-                    <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                    <img src={donaciones} className="w-6 h-6" />
                     Donaciones
                   </NavLink>
                   <NavLink
@@ -202,7 +207,7 @@ const Sidebar = () => {
                         : "text-white hover:bg-red-800 gap-3"
                     }`}
                   >
-                       <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                       <img src={emergencias} className="w-6 h-6" />
                     Emergencias
                   </NavLink>
                   <NavLink
@@ -214,7 +219,7 @@ const Sidebar = () => {
                         : "text-white hover:bg-red-800 gap-3"
                     }`}
                   >
-                       <img src="https://img.icons8.com/?size=100&id=12143&format=png&color=000000" className="w-6 h-6" />
+                       <img src={historiales} className="w-6 h-6" />
                     Historiales
                   </NavLink>
                 </div>

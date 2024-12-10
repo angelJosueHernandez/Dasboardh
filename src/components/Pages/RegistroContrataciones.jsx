@@ -14,7 +14,7 @@ const RegistroContrataciones = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responseContratacion = await fetch(`http://localhost:3000/contratacionAmbulancia/${ID_Contratacion}`);
+                const responseContratacion = await fetch(`http://localhost:3000/ContratacionAmbulancia/${ID_Contratacion}`);
                 if (!responseContratacion.ok) {
                     throw new Error('No se pudo obtener los datos de la contratación');
                 }
@@ -72,9 +72,9 @@ const RegistroContrataciones = () => {
   return (
     <div className="container_principal">
         <div className="flex justify-center items-center min-h-screen bg-white-100 p-4">
-            <div className="bg-white shadow-lg rounded-lg p-8 flex flex-col lg:flex-row lg:space-x-8 w-full max-w-6xl">
-                <form className="w-full lg:w-2/3">
-                    <h3 className="text-[50px] text-red-800 mb-4" style={{ width: '200%', textAlign: 'left' }}>Detalle de Contratación de Ambulancia</h3>
+            <div className="flex flex-col lg:flex-row lg:space-x-8 w-full ">
+                <form className="w-full ">
+                    <h3 className="text-[30px] text-red-800 mb-4" style={{ width: '100%', textAlign: 'center' }}>Detalle de Contratación de Ambulancia</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div className="form-group col-span-1 md:col-span-1">
                             <label className="block text-sm font-medium text-gray-700">Nombre</label>
@@ -133,7 +133,7 @@ const RegistroContrataciones = () => {
                             <p className="mt-1 p-2 text-[12px] border border-gray-300 rounded-md w-full bg-gray-50">{tipoContratacion.tipo}</p>
                         </div>
                     </div>
-                    <div className="flex justify-end space-x-4 mt-4">
+                    <div className="flex justify-center space-x-4 mt-4">
                         <button 
                             type="button" 
                             className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700" 

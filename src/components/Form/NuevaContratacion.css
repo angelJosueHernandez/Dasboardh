@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.form_nueva_contratacion{
+    margin-top: 50px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    
+}
+.form_nueva_contratacion .titulo_contratacion{
+    text-align: center;
+    grid-column: span 3;
+    font-family: "Host Grotesk", sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+}
+
+.form_nueva_contratacion .grup-input .text_input{
+    outline: none; /* Quita el borde predeterminado del navegador */
+      border-radius: 5px; /* Bordes redondeados */
+      height: 35px;
+      background: #ffffff;
+      border: 1px solid #ccc; /* Borde gris claro */
+      padding: 5px 10px; /* Espaciado interno para mayor visibilidad */
+      transition: border 0.3s ease; /* Transición suave al cambiar el borde */
+}
+
+/*---------------------------- botones ------------------------------*/
+.form_nueva_contratacion .btns_contratacion{
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+}
+.btns_contratacion .btn_nueva{
+    width: 100px;
+    height: 30px;
+    background: #FF0040;
+    color: #fff;
+    border-radius: 5px;
+}
+.btns_contratacion .btn_cancelar{
+    width: 100px;
+    height: 30px;
+    background: #FF0040;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 10%;
+}

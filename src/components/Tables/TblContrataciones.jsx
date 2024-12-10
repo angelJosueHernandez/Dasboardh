@@ -105,7 +105,7 @@ const TblContrataciones = () => {
 
     return (
         <div /*className='container_principal'*/ >
-            {/*<h1 className='title_emergencias'>Registro de Contratacion de Ambulancias</h1>*/}
+            
             
             <div>
                 <legend className='text-sm'>Filtros</legend>
