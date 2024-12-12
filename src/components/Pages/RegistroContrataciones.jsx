@@ -10,6 +10,12 @@ const RegistroContrataciones = () => {
     const [contratacion, setContratacion] = useState(null);
     const [ambulancia, setAmbulancia] = useState(null);
     const [tipoContratacion, setTipoContratacion] = useState(null);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [modalContent, setModalContent] = useState('');
+    const [modalType, setModalType] = useState(''); // 'accept' o 'reject'
+    const [motivo, setMotivo] = useState('');
+    const [precio, setPrecio] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -54,25 +60,58 @@ const RegistroContrataciones = () => {
         return moment(timeString, 'HH:mm').format('HH:mm');
     };
 
-    const handleAccept = () => {
-        navigate(`/ContratacionAmbulancias/Aceptado/${ID_Contratacion}`);
+    const handleModalOpen = (type) => {
+        setModalType(type);
+        setIsModalVisible(true);
     };
 
-    const handleReject = () => {
-        navigate(`/ContratacionAmbulancias/Rechazado/${ID_Contratacion}`);
+    const handleModalClose = () => {
+        setIsModalVisible(false);
+        setMotivo('');
+        setPrecio('');
     };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setIsSubmitting(true);
+
+        const estado = modalType === 'accept' ? 'aceptada' : 'rechazada';
+        const body = modalType === 'accept' ? { estado, motivo, precio } : { estado, motivo };
+
+        try {
+            const response = await fetch(`http://localhost:3000/contratacionAmbulancia/${ID_Contratacion}/estado`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            });
+
+            if (response.ok) {
+                message.success(`Solicitud ${estado} con éxito`);
+                handleModalClose();
+            } else {
+                message.error(`Error al ${estado} la solicitud`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            message.error(`Error al ${estado} la solicitud`);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
 
     if (!contratacion || !ambulancia || !tipoContratacion) {
         return <div>Cargando...</div>;
     }
 
-    const isAcceptDisabled = contratacion.estado === 'aceptada';
-    const isRejectDisabled = contratacion.estado === 'aceptada';
+    
 
   return (
     <div className="container_principal">
         <div className="flex justify-center items-center min-h-screen bg-white-100 p-4">
-            <div className="flex flex-col lg:flex-row lg:space-x-8 w-full ">
+            <div className="flex flex-col w-full max-w-5xl ">
                 <form className="w-full ">
                     <h3 className="text-[30px] text-red-800 mb-4" style={{ width: '100%', textAlign: 'center' }}>Detalle de Contratación de Ambulancia</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -137,16 +176,14 @@ const RegistroContrataciones = () => {
                         <button 
                             type="button" 
                             className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700" 
-                            onClick={handleAccept} 
-                            disabled={isAcceptDisabled}
+                            onClick={() => handleModalOpen('accept')}
                         >
                             Aceptar Solicitud
                         </button>
                         <button 
                             type="button" 
                             className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700" 
-                            onClick={handleReject} 
-                            disabled={isRejectDisabled}
+                            onClick={() => handleModalOpen('reject')}
                         >
                             Rechazar Solicitud
                         </button>
@@ -156,7 +193,59 @@ const RegistroContrataciones = () => {
                 </div>
             </div>
         </div>
-      
+        {isModalVisible && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <div className="bg-white p-6 rounded-md shadow-md w-96">
+                    <h3 className="text-lg font-semibold mb-4">
+                        {modalType === 'accept' ? 'Motivo de Aceptación' : 'Motivo de Rechazo'}
+                    </h3>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label className="block text-sm font-medium text-gray-700">
+                                {modalType === 'accept' ? 'Motivo de Aceptación' : 'Motivo de Rechazo'}
+                            </label>
+                            <textarea
+                                className="mt-1 p-2 text-[12px] border border-gray-300 rounded-md w-full bg-gray-50"
+                                value={motivo}
+                                onChange={(e) => setMotivo(e.target.value)}
+                                rows="4"
+                                required
+                            />
+                        </div>
+                        {modalType === 'accept' && (
+                            <div className="form-group mt-4">
+                                <label className="block text-sm font-medium text-gray-700">Precio de la Contratación</label>
+                                <input
+                                    type="text"
+                                    className="mt-1 p-2 text-[12px] border border-gray-300 rounded-md w-full bg-gray-50"
+                                    value={precio}
+                                    onChange={(e) => setPrecio(e.target.value)}
+                                    pattern="^\d+(\.\d{1,2})?$"
+                                    title="El precio debe ser un número válido con hasta dos decimales"
+                                    required
+                                />
+                            </div>
+                        )}
+                        <div className="flex justify-end space-x-4 mt-4">
+                            <button
+                                type="button"
+                                className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400"
+                                onClick={handleModalClose}
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                type="submit"
+                                className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Procesando...' : modalType === 'accept' ? 'Aceptar' : 'Rechazar'}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        )}
     </div>
   )
 }

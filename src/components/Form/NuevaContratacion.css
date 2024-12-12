@@ -14,15 +14,40 @@
     font-weight: 800;
     font-size: 25px;
 }
+/*------------------------- inputs ----------------------------*/
+.form_nueva_contratacion .grup-input{
+    display: block;
+    width: 300px;
+    
+}
+.form_nueva_contratacion .grup-input label{
+    font-family: "Host Grotesk", sans-serif;
+    font-weight: 600;
+}
 
 .form_nueva_contratacion .grup-input .text_input{
-    outline: none; /* Quita el borde predeterminado del navegador */
-      border-radius: 5px; /* Bordes redondeados */
-      height: 35px;
-      background: #ffffff;
-      border: 1px solid #ccc; /* Borde gris claro */
-      padding: 5px 10px; /* Espaciado interno para mayor visibilidad */
-      transition: border 0.3s ease; /* Transición suave al cambiar el borde */
+    outline: none;
+    border-radius: 5px; 
+    width: 100%;
+    height: 35px;
+    background: #ffffff;
+    border: 1px solid #ccc; 
+    padding: 5px 10px; 
+    transition: border 0.3s ease; 
+}
+.form_nueva_contratacion .grup-input .text_input:focus{
+    border: 1px solid #007BFF; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+.form_nueva_contratacion .grup-input .msg_error{
+    width: 100%;
+    height: 30px;
+
+}
+.form_nueva_contratacion .grup-input .msg_error{
+    color: #FF0040;
+    font-weight: 600;
+    font-size: 12px;
 }
 
 /*---------------------------- botones ------------------------------*/
@@ -33,16 +58,17 @@
 }
 .btns_contratacion .btn_nueva{
     width: 100px;
-    height: 30px;
-    background: #FF0040;
-    color: #fff;
-    border-radius: 5px;
-}
-.btns_contratacion .btn_cancelar{
-    width: 100px;
-    height: 30px;
+    height: 40px;
     background: #FF0040;
     color: #fff;
     border-radius: 5px;
     margin-left: 10%;
+}
+.btns_contratacion .btn_cancelar{
+    width: 100px;
+    height: 40px;
+    background: #FF0040;
+    color: #fff;
+    border-radius: 5px;
+    
 }
