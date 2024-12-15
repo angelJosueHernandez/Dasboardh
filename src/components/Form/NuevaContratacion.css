@@ -14,11 +14,20 @@
     font-weight: 800;
     font-size: 25px;
 }
+.form_nueva_contratacion .ocupadas{
+    grid-column: span 3;
+    margin-top: 10px;
+}
+.form_nueva_contratacion .ocupadas .msg_ambulancias{
+    color: #FF0040;
+    font-weight: 600;
+    font-size: 12px;
+}
 /*------------------------- inputs ----------------------------*/
 .form_nueva_contratacion .grup-input{
     display: block;
     width: 300px;
-    
+    margin-top: 10px;
 }
 .form_nueva_contratacion .grup-input label{
     font-family: "Host Grotesk", sans-serif;

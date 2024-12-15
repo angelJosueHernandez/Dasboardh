@@ -77,9 +77,10 @@ const RegistroContrataciones = () => {
 
         const estado = modalType === 'accept' ? 'aceptada' : 'rechazada';
         const body = modalType === 'accept' ? { estado, motivo, precio } : { estado, motivo };
+        console.log('Cuerpo de la solicitud:', body); // Asegúrate de que esto contiene los datos esperados
 
         try {
-            const response = await fetch(`http://localhost:3000/contratacionAmbulancia/${ID_Contratacion}/estado`, {
+            const response = await fetch(`http://localhost:3000/ContratacionAmbulancia/${ID_Contratacion}/estado`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

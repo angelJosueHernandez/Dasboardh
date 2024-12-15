@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { Select, Option, } from "@material-tailwind/react";
 import './NuevaContratacion.css'
-//import './ModalEmergencias.css'
+import { useNavigate } from 'react-router-dom';
 
 const NuevaContratacion = () => {
+  const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
     nombre: '',
@@ -25,6 +26,7 @@ const NuevaContratacion = () => {
   const [tiposContratacion, setTiposContratacion] = useState([]);
   const [asociados, setAsociados] = useState([]);
   const [ambulancias, setAmbulancias] = useState([]);
+  const [mensajeAmbulancias, setMensajeAmbulancias] = useState(''); // Nuevo estado para el mensaje
 
   useEffect(() => {
     // Fetch tipos de contratación
@@ -53,8 +55,18 @@ const NuevaContratacion = () => {
     const fetchAmbulancias = async () => {
       try {
         const response = await fetch('http://localhost:3000/ambulancias-disponibles');
+        if (!response.ok) {
+          throw new Error('Error al cargar las ambulancias.');
+        }
         const data = await response.json();
-        setAmbulancias(data);
+        // Manejar array vacío o mensaje
+        if (Array.isArray(data) && data.length > 0) {
+          setAmbulancias(data);
+          setMensajeAmbulancias('');
+        } else if (data.msg) {
+          setAmbulancias([]);
+          setMensajeAmbulancias(data.msg);
+        }
       } catch (error) {
         console.error('Error fetching ambulancias:', error);
       }
@@ -222,6 +234,14 @@ const NuevaContratacion = () => {
     <div>
       <form className='form_nueva_contratacion' onSubmit={handleSubmit}>
         <div className='titulo_contratacion'><h1>Registrar Nueva Contratación</h1></div>
+        
+        {/* Mostrar mensaje de ambulancias */}
+        <div className='ocupadas'>
+          {mensajeAmbulancias && (
+            <p className="msg_ambulancias">{mensajeAmbulancias}</p>
+          )}
+        </div>
+        
         <div className='grup-input'>
           <div><label htmlFor="" className='label-name'>Nombre:</label></div>
           <div>
@@ -230,7 +250,8 @@ const NuevaContratacion = () => {
               type="text"
               name="nombre"
               value={formValues.nombre}
-              onChange={handleChange} 
+              onChange={handleChange}
+              disabled={!!mensajeAmbulancias} 
             />         
           </div>
           <div className='msg_error'>
@@ -246,6 +267,7 @@ const NuevaContratacion = () => {
               name="apellido_Paterno"
               value={formValues.apellido_Paterno}
               onChange={handleChange} 
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -261,6 +283,7 @@ const NuevaContratacion = () => {
               name="apellido_Materno"
               value={formValues.apellido_Materno}
               onChange={handleChange} 
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -276,6 +299,7 @@ const NuevaContratacion = () => {
               name="inicio_Traslado"
               value={formValues.inicio_Traslado}
               onChange={handleChange} 
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -291,6 +315,7 @@ const NuevaContratacion = () => {
               name="escala"
               value={formValues.escala}
               onChange={handleChange} 
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -306,6 +331,7 @@ const NuevaContratacion = () => {
               name="destino_Traslado"
               value={formValues.destino_Traslado}
               onChange={handleChange} 
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -321,6 +347,7 @@ const NuevaContratacion = () => {
               name="motivo"
               value={formValues.motivo}
               onChange={handleChange} 
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -336,6 +363,7 @@ const NuevaContratacion = () => {
               name="material_especifico"
               value={formValues.material_especifico}
               onChange={handleChange}
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -353,6 +381,7 @@ const NuevaContratacion = () => {
               name="fecha"
               value={formValues.fecha}
               onChange={handleChange}
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -368,6 +397,7 @@ const NuevaContratacion = () => {
               name="horario"
               value={formValues.horario}
               onChange={handleChange}
+              disabled={!!mensajeAmbulancias}
             />
           </div>
           <div className='msg_error'>
@@ -382,6 +412,7 @@ const NuevaContratacion = () => {
               name="ID_Asociado"
               value={formValues.ID_Asociado}
               onChange={handleChange}
+              disabled={!!mensajeAmbulancias}
             >
               <option value="">Seleccione un asociado</option>
               {asociados.map((asociado) => (
@@ -403,6 +434,7 @@ const NuevaContratacion = () => {
               name="ID_Tipo_Contratacion"
               value={formValues.ID_Tipo_Contratacion}
               onChange={handleChange}
+              disabled={!!mensajeAmbulancias}
             >
               <option value="">Seleccione un tipo de contratación</option>
               {tiposContratacion.map((tipo) => (
@@ -424,6 +456,7 @@ const NuevaContratacion = () => {
               name="AmbulanciaID"
               value={formValues.AmbulanciaID}
               onChange={handleChange}
+              disabled={!!mensajeAmbulancias}
             >
               <option value="">Seleccione una ambulancia</option>
               {ambulancias.map((ambulancia) => (
@@ -438,8 +471,10 @@ const NuevaContratacion = () => {
           </div>
         </div>
         <div className='btns_contratacion'>
-          <button className='btn_cancelar' type="button" >Cancelar</button> 
-          <input className='btn_nueva' type="submit" value="Registrar" />
+          <button className='btn_cancelar' type="button" 
+            onClick={() => navigate('/ContratacionAmbulancias')}>Cancelar
+          </button> 
+          <input className='btn_nueva' type="submit" value="Registrar" disabled={!!mensajeAmbulancias}/>
         </div> 
       </form>
     </div>

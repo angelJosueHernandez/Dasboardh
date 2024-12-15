@@ -10,10 +10,9 @@ import { useNavigate } from 'react-router-dom';
 const Contrataciones = () => {
   const navigate = useNavigate(); 
 
-    const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
-    const [newContratacion, setNewContratacion] = useState({}); // Estado para la nueva emergencia
+    
 
-    AOS.init();
+  AOS.init();
   return (
     <div className="container_principal" data-aos="fade-up" data-aos-duration="3000">
       <h1 className="title_emergencias">Contrataciones Registradas</h1>
