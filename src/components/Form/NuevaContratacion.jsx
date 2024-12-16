@@ -27,6 +27,7 @@ const NuevaContratacion = () => {
   const [asociados, setAsociados] = useState([]);
   const [ambulancias, setAmbulancias] = useState([]);
   const [mensajeAmbulancias, setMensajeAmbulancias] = useState(''); // Nuevo estado para el mensaje
+  const [showModal, setShowModal] = useState(false); // Estado para mostrar el modal
 
   useEffect(() => {
     // Fetch tipos de contratación
@@ -228,6 +229,20 @@ const NuevaContratacion = () => {
         alert("Error al registrar la contratación.");
       }
     }
+  };
+
+  /*----------------------Codigo del Modal-------------------*/
+  const handleCancelar = () => {
+    setShowModal(true); // Muestra el modal
+  };
+
+  const confirmCancel = () => {
+    setShowModal(false);
+    navigate('/ContratacionAmbulancias'); // Redirige si confirma cancelar
+  };
+
+  const closeModal = () => {
+    setShowModal(false); // Cierra el modal sin redirigir
   };
 
   return (
@@ -472,11 +487,23 @@ const NuevaContratacion = () => {
         </div>
         <div className='btns_contratacion'>
           <button className='btn_cancelar' type="button" 
-            onClick={() => navigate('/ContratacionAmbulancias')}>Cancelar
+            onClick={handleCancelar}>Cancelar
           </button> 
           <input className='btn_nueva' type="submit" value="Registrar" disabled={!!mensajeAmbulancias}/>
         </div> 
       </form>
+      {/* Modal de confirmación */}
+      {showModal && (
+        <div className="modal_confirmacion">
+          <div className="modal1">
+            <h3>¿Desea cancelar el registro?</h3>
+            <div className="modal-buttons">
+              <button className="btn_confirmar" onClick={confirmCancel}>Sí, cancelar</button>
+              <button className="btn_cerrar" onClick={closeModal}>No</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

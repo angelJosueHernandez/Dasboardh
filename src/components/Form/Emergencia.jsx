@@ -308,9 +308,8 @@ export default function Emergencia() {
                         </div>
                     </div>
                     <div className='conte-registrarE'>
-                        <input className='btn_submit' type="submit" value="Registrar" />
-                        <button className='btn_cancel' type="button" onClick={() => setShowModal(false)}>Cancelar</button>
-                        
+                      <button className='btn_cancel' type="button" onClick={() => setShowModal(false)}>Cancelar</button>
+                      <input className='btn_submit' type="submit" value="Registrar" />
                     </div>
                     {formularioEnviado &&<p className='exito'>Formulario Enviado con Exito</p>}
                 </div>

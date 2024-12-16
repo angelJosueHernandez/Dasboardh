@@ -221,8 +221,8 @@ const Suministros = () => {
                 </div>
               </div>
               <div className='conte-registrarS'>
-                <input className='btn_submit' type="submit" value="Registrar" />
                 <button className='btn_cancel' type="button" onClick={() => setShowModal(false)}>Cancelar</button>
+                <input className='btn_submit' type="submit" value="Registrar" />
               </div>
             </form>
           </div>

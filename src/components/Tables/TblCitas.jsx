@@ -74,7 +74,7 @@ const TblCitas = () => {
         {
           title: 'Acción',
           key: 'action',
-          width: 150,
+          width: 100,
           render: (text, record) => (
             <div className="btn_mostrarC">
               <button
@@ -171,7 +171,17 @@ const TblCitas = () => {
                     <tr key={item.ID_Cita}>
                         {columns.map(column => (
                         <td key={column.key} style={{ width: column.width }}>
-                            {column.render ? column.render(null, item) : item[column.dataIndex]}
+                            {column.dataIndex === 'estado' ? (
+                                <span
+                                className={`estado-pill ${
+                                    item.estado === 'Atendido' ? 'estado-atendido' : 'estado-pendiente'
+                                }`}
+                                >
+                                {item.estado}
+                                </span>
+                            ) : (
+                                column.render ? column.render(null, item) : item[column.dataIndex]
+                            )}
                         </td>
                         ))}
                     </tr>

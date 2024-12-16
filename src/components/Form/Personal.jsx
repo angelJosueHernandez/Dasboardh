@@ -359,8 +359,8 @@ const Personal = () => {
                             <div><input type="text" name="" id="" className='input-text' /></div>
                         </div>*/}
                         <div className='conte-registrarP'>
-                            <input className='btn_submit' type="submit" value="Registrar" />
                             <button className='btn_cancel' type="button" onClick={() => setShowModal(false)}>Cancelar</button>
+                            <input className='btn_submit' type="submit" value="Registrar" />  
                         </div>
                         {formularioEnviado &&<p>Formulario Enviado con Exito</p>}
                     </div>

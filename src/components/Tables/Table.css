@@ -104,3 +104,20 @@ text-align: center;
     margin: 10px;
     margin-bottom: 5px;
 }
+
+/*------------------------ diseño del eatado de las citas ---------------------*/
+.estado-pill{
+    padding: 2px 10px; /* Espaciado interno */
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+.estado-atendido {
+    background-color: #cbdfbd;
+    color: #386641;
+}
+  
+.estado-pendiente {
+    background-color: #ffccd5;
+    color: #8d0801;
+}
