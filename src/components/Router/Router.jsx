@@ -20,7 +20,7 @@ import RegistroHistorial from '../Pages/RegistroHistorial';
 import RegistroContrataciones from '../Pages/RegistroContrataciones';
 import Login from '../Pages/Login';
 import NuevaContratacion from '../Form/NuevaContratacion';
-
+import HistorialCompleto2 from '../Pages/RegistroMostrarEditar';
 
 const PrivateRoute = ({ children }) => {
   
@@ -47,7 +47,7 @@ export default function AppRoutes() {
         <Route path='/Donaciones' element={<PrivateRoute><Layout><TblDonaciones/></Layout></PrivateRoute>}/>
         <Route path='/HistorialRegistrado' element={<PrivateRoute><Layout><HistorialMedico/></Layout></PrivateRoute>}/>
         <Route path='/RegistroHistorial' element={<PrivateRoute><Layout><RegistroHistorial/></Layout></PrivateRoute>}/>
-        <Route path='/HistorialRegistrado/HistorialCompleto/:ID_Historial' element={<PrivateRoute><Layout><HistorialCompleto/></Layout></PrivateRoute>}/>
+        <Route path='/HistorialRegistrado/HistorialCompleto/:ID_Historial' element={<PrivateRoute><Layout><HistorialCompleto2/></Layout></PrivateRoute>}/>
         <Route path='/PersonalRegistrado' element={<PrivateRoute><Layout><Personal/></Layout></PrivateRoute>}/>
         <Route path='/SuministrosMedicos' element={<PrivateRoute><Layout><Suministros/></Layout></PrivateRoute>}/>
         <Route path='/UsuariosRegistrados' element={<PrivateRoute><Layout><TblUsuarios/></Layout></PrivateRoute>}/>
