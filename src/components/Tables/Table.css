@@ -121,3 +121,14 @@ text-align: center;
     background-color: #ffccd5;
     color: #8d0801;
 }
+
+/*-----------------Estados de la cuenta de la tabla del personal---------------------*/
+.estado-activo {
+    background-color: #d4edda; 
+    color: #155724;
+}
+/* Clase para estado Desactivado */
+.estado-desactivado {
+    background-color: #f8d7da; 
+    color: #721c24; 
+}

@@ -63,6 +63,9 @@ const TblPersonal = () => {
             });
             if (response.ok) {
                 toggleMenu();
+                // Cerrar el modal después de actualizar
+                setModalOpen(false);
+                setEditMode(false);
             } else {
                 console.error('Error al actualizar el cargo');
             }
@@ -139,7 +142,15 @@ const TblPersonal = () => {
                                 <td>{item.apellidoP}</td>
                                 <td>{item.apellidoM}</td>
                                 <td>{formatDate(item.fecha_Registro)}</td>
-                                <td>{item.estado_Usuario}</td>
+                                <td>
+                                    <span
+                                        className={`estado-pill ${
+                                        item.estado_Usuario === 'Activo' ? 'estado-activo' : 'estado-desactivado'
+                                        }`}
+                                    >
+                                        {item.estado_Usuario}
+                                    </span>
+                                </td>
                                 <td>{item.estado_Cuenta}</td>
                                 <td>{item.Id_Cargo}</td>
                                 <td>
@@ -179,38 +190,41 @@ const TblPersonal = () => {
 
                 <div>
                     {editMode && (
-                        <form className={`modal_editar ${modalOpen ? 'open-menu' : ''}`} id='modalEditar' onSubmit={handleSubmit}>
-                            {selectedPersonal && (
-                                <>
-                                    
-                                    <label htmlFor="">Nombre</label>
-                                    <input className='input_Modal' type="text" value={selectedPersonal.nombre} readOnly />
-                                    
-                                    
-                                    <label htmlFor="">Apellido Paterno</label>
-                                    <input className='input_Modal' type="text" value={selectedPersonal.apellidoP} readOnly />
-                                    
-                                    
-                                    <label htmlFor="">Apellido Materno</label>
-                                    <input className='input_Modal' type="text" value={selectedPersonal.apellidoM} readOnly />
-                                </>
-                            )}
-                                <label htmlFor="">Cargo</label>
-                                <select className='input_Modal' value={selectedCargo} onChange={handleCargoChange}>
-                                    {cargo.map((cargos) => (
-                                        <option
-                                            key={cargos.Id_Cargo}
-                                            value={cargos.Id_Cargo}>{cargos.tipo_Cargo}
-                                        </option>
-                                    ))}
-                                </select>
-                            <div className='btns_editar_personal'>
-                                <div className="btn-group">
-                                    <button className='btn_actualizar_personal' type="submit">Actualizar</button>
-                                    <button className='btn_cancelar_personal' type="button" onClick={handleCancel}>Cancelar</button>
+                        <div className="modal-overlay-editar-Personal">
+                            <form className={`modal_editar ${modalOpen ? 'open-menu' : ''}`} id='modalEditar' onSubmit={handleSubmit}>
+                                {selectedPersonal && (
+                                    <>
+                                        <h1 className='titulo_nuevo_cargo'>Actualizar Cargo</h1>
+                                        <label>Nombre</label>
+                                        <input className='input_Modal' type="text" value={selectedPersonal.nombre} readOnly />
+                                        
+                                        
+                                        <label>Apellido Paterno</label>
+                                        <input className='input_Modal' type="text" value={selectedPersonal.apellidoP} readOnly />
+                                        
+                                        
+                                        <label>Apellido Materno</label>
+                                        <input className='input_Modal' type="text" value={selectedPersonal.apellidoM} readOnly />
+                                    </>
+                                )}
+                                    <label>Cargo</label>
+                                    <select className='input_Modal' value={selectedCargo} onChange={handleCargoChange}>
+                                        {cargo.map((cargos) => (
+                                            <option
+                                                key={cargos.Id_Cargo}
+                                                value={cargos.Id_Cargo}>{cargos.tipo_Cargo}
+                                            </option>
+                                        ))}
+                                    </select>
+                                <div className='btns_editar_personal'>
+                                    <div className="btn-group">
+                                        <button className='btn_actualizar_personal' type="submit">Actualizar</button>
+                                        <button className='btn_cancelar_personal' type="button" onClick={handleCancel}>Cancelar</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                        
                     )}
                 </div>
             </div>
