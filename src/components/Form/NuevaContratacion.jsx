@@ -55,7 +55,7 @@ const NuevaContratacion = () => {
     // Fetch ambulancias
     const fetchAmbulancias = async () => {
       try {
-        const response = await fetch('http://localhost:3000/ambulancias-disponibles');
+        const response = await fetch('http://localhost:3000/ambulancias-disponiblesAdmin');
         if (!response.ok) {
           throw new Error('Error al cargar las ambulancias.');
         }
