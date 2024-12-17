@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import './RegistroMostrarEditar.css'
 import { message } from 'antd';
-
+import { DefaultSkeleton } from '../Loader/Skeleton';
 
 export default function HistorialCompleto2() {
 
@@ -22,7 +22,7 @@ export default function HistorialCompleto2() {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/historialMedicoId/${ID_Historial}`);
+            const response = await fetch(`https://api-beta-mocha-59.vercel.app/historialMedicoId/${ID_Historial}`);
             if (!response.ok) {
                 throw new Error('No se pudo obtener los datos');
             }
@@ -36,7 +36,7 @@ export default function HistorialCompleto2() {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/antecedentesID/${ID_Historial}`);
+            const response = await fetch(`https://api-beta-mocha-59.vercel.app/antecedentesID/${ID_Historial}`);
             if (!response.ok) {
                 throw new Error('No se pudo obtener los datos');
             }
@@ -50,7 +50,7 @@ export default function HistorialCompleto2() {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/expedienteID/${ID_Historial}`);
+            const response = await fetch(`https://api-beta-mocha-59.vercel.app/expedienteID/${ID_Historial}`);
             if (!response.ok) {
                 throw new Error('No se pudo obtener los expedientes');
             }
@@ -258,7 +258,7 @@ const handleSubmitNuevoAntecedente = async () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/antecedentesPatologico2', {
+      const response = await fetch('https://api-beta-mocha-59.vercel.app/antecedentesPatologico2', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -413,7 +413,7 @@ const handleSubmit = (event) => {
       console.log('Formulario enviado:', formValues);
   
       // Guardar los datos en nuevoHistorialMedico
-      fetch("http://localhost:3000/nuevoHistorialMedico", {
+      fetch("https://api-beta-mocha-59.vercel.app/nuevoHistorialMedico", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -428,7 +428,7 @@ const handleSubmit = (event) => {
         // Si hay antecedentes, guardarlos en antecedentesPatologico
         if (antecedentes.length > 0) {
           const promesas = antecedentes.map(antecedente => {
-            return fetch("http://localhost:3000/antecedentesPatologico", {
+            return fetch("https://api-beta-mocha-59.vercel.app/antecedentesPatologico", {
               method: "POST",
               headers: {
                 'Content-Type': 'application/json'
@@ -536,7 +536,7 @@ const handleSubmit = (event) => {
   ////////////////-----------------------------Actualizar los medicamentos seleccionados----------------------------------
   const editarAlergicoMedicamentos = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/actualizarMedicamentoID/${ID_Historial}`, {
+      const response = await fetch(`https://api-beta-mocha-59.vercel.app/actualizarMedicamentoID/${ID_Historial}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -589,7 +589,7 @@ const saveChanges = async () => {
     // Por ejemplo, puedes enviarlos a tu backend para actualizar los datos
     try {
       // Realizar la actualización en la base de datos
-      const response = await fetch(`http://localhost:3000/actualizarInfoPerId/${ID_Historial}`, {
+      const response = await fetch(`https://api-beta-mocha-59.vercel.app/actualizarInfoPerId/${ID_Historial}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -602,7 +602,7 @@ const saveChanges = async () => {
       }
      
       // Una vez que la actualización sea exitosa, realizar una nueva consulta para obtener los datos actualizados
-      const newDataResponse = await fetch(`http://localhost:3000/antecedentesID/${ID_Historial}`);
+      const newDataResponse = await fetch(`https://api-beta-mocha-59.vercel.app/antecedentesID/${ID_Historial}`);
       if (!newDataResponse.ok) {
         throw new Error('Error al obtener los datos actualizados');
       }
@@ -674,7 +674,7 @@ useEffect(() => {
 
      try {
        // Realizar la actualización en la base de datos
-       const response = await fetch(`http://localhost:3000/actualizarContactoEmergenciaID/${ID_Historial}`, {
+       const response = await fetch(`https://api-beta-mocha-59.vercel.app/actualizarContactoEmergenciaID/${ID_Historial}`, {
          method: 'PUT',
          headers: {
            'Content-Type': 'application/json'
@@ -687,7 +687,7 @@ useEffect(() => {
        }
    
        // Una vez que la actualización sea exitosa, realizar una nueva consulta para obtener los datos actualizados
-       const newDataResponse = await fetch(`http://localhost:3000/antecedentesID/${ID_Historial}`);
+       const newDataResponse = await fetch(`https://api-beta-mocha-59.vercel.app/antecedentesID/${ID_Historial}`);
        if (!newDataResponse.ok) {
          throw new Error('Error al obtener los datos actualizados');
        }
@@ -1309,7 +1309,7 @@ useEffect(() => {
  
     </div>
        ) : (
-        <p>Cargando...</p>
+        <DefaultSkeleton/>
 )}
 
   </div>

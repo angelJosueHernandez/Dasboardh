@@ -12,7 +12,7 @@ const Personal = () => {
 
     const [cargo,setCargo]=useState([]);
 
-    const URLUser='http://localhost:3000/tipoCargo';
+    const URLUser='https://api-beta-mocha-59.vercel.app/tipoCargo';
 
     const peticionGet= async()=>{
         const response= await fetch(URLUser)
@@ -137,7 +137,7 @@ const Personal = () => {
                 
                 onSubmit={(valores,{resetForm})=>{
                     
-                    fetch("http://localhost:3000/registroPersonal",
+                    fetch("https://api-beta-mocha-59.vercel.app/registroPersonal",
                         {
                             method: "POST",
                             headers: {

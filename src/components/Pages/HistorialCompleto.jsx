@@ -13,7 +13,7 @@ const HistorialCompleto = () => {
     useEffect(() => {
       const fetchData = async () => {
           try {
-              const response = await fetch(`http://localhost:3000/historialMedicoId/${ID_Historial}`);
+              const response = await fetch(`https://api-beta-mocha-59.vercel.app/historialMedicoId/${ID_Historial}`);
               if (!response.ok) {
                   throw new Error('No se pudo obtener los datos');
               }
@@ -26,7 +26,7 @@ const HistorialCompleto = () => {
           }
   
           try {
-              const response = await fetch(`http://localhost:3000/antecedentesID/${ID_Historial}`);
+              const response = await fetch(`https://api-beta-mocha-59.vercel.app/antecedentesID/${ID_Historial}`);
               if (!response.ok) {
                   throw new Error('No se pudo obtener los datos');
               }
@@ -40,7 +40,7 @@ const HistorialCompleto = () => {
           }
   
           try {
-              const response = await fetch(`http://localhost:3000/expedienteID/${ID_Historial}`);
+              const response = await fetch(`https://api-beta-mocha-59.vercel.app/expedienteID/${ID_Historial}`);
               if (!response.ok) {
                   throw new Error('No se pudo obtener los expedientes');
               }
@@ -99,7 +99,7 @@ const HistorialCompleto = () => {
         e.preventDefault();
         
         try {
-            const response = await fetch('http://localhost:3000/antecedentesPatologico2', {
+            const response = await fetch('https://api-beta-mocha-59.vercel.app/antecedentesPatologico2', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

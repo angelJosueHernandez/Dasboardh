@@ -309,7 +309,7 @@ const RegistroHistorial = () => {
         console.log('Formulario enviado:', formValues);
 
         // Guardar los datos en nuevoHistorialMedico
-        fetch("http://localhost:3000/nuevoHistorialMedico", {
+        fetch("https://api-beta-mocha-59.vercel.app/nuevoHistorialMedico", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -324,7 +324,7 @@ const RegistroHistorial = () => {
         // Si hay antecedentes, guardarlos en antecedentesPatologico
         if (antecedentes.length > 0) {
             const promesas = antecedentes.map(antecedente => {
-            return fetch("http://localhost:3000/antecedentesPatologico", {
+            return fetch("https://api-beta-mocha-59.vercel.app/antecedentesPatologico", {
                 method: "POST",
                 headers: {
                 'Content-Type': 'application/json'

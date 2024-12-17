@@ -1,3 +1,8 @@
+"use client";
+
+import { AreaChart } from '@tremor/react';
+import CitasEstadisticas from '../Graficas/Citas';
+import ContratacionesGrafica from '../Graficas/Contrataciones';
 import React,{useState, useEffect} from 'react'
 import { RiLineChartLine, RiHashtag } from "react-icons/ri";
 import {
@@ -13,6 +18,8 @@ import {
 } from 'chart.js';
 import { Line, Pie } from 'react-chartjs-2';
 
+import AreaChartCallbackExample from '../Graficas/Donaciones';
+
 // Registra los componentes necesarios de Chart.js
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement,ArcElement, Title, Tooltip, Legend);
 
@@ -26,11 +33,16 @@ export default function Home() {
   const [serviceAverages, setServiceAverages] = useState({});
   const [contractTypeAverages, setContractTypeAverages] = useState({});
 
+
+  const [donationData2, setDonationData2] = useState([]);
+  const [totalDonations2, setTotalDonations2] = useState(null);
+
+
   //--------------------------------------------  Feedback ----------------------------------------
   // Función para obtener el promedio de feedback desde la API
   const fetchFeedbackRating = async () => {
     try {
-      const response = await fetch('http://localhost:3000/feedback'); // Asegúrate de que esta sea la ruta correcta de tu API
+      const response = await fetch('https://api-beta-mocha-59.vercel.app/feedback'); // Asegúrate de que esta sea la ruta correcta de tu API
       const data = await response.json();
       setFeedbackRating(data.averageRating); // Asigna el promedio al estado
     } catch (error) {
@@ -53,7 +65,7 @@ export default function Home() {
 
   const fetchFeedbackPercentages = async () => {
     try {
-        const response = await fetch('http://localhost:3000/categoriaFeedback'); // Ruta de tu nueva API
+        const response = await fetch('https://api-beta-mocha-59.vercel.app/categoriaFeedback'); // Ruta de tu nueva API
         const data = await response.json();
         setFeedbackPercentages(data.percentages); // Asigna los datos al estado
     } catch (error) {
@@ -120,23 +132,58 @@ export default function Home() {
   // Función para obtener el total de donaciones desde la API
   const fetchTotalDonations = async () => {
     try {
-      const response = await fetch('http://localhost:3000/totalDonaciones'); // Asegúrate de que esta sea la ruta correcta de tu API
+      const response = await fetch('https://api-beta-mocha-59.vercel.app/totalDonaciones'); // Asegúrate de que esta sea la ruta correcta de tu API
       const data = await response.json();
       setTotalDonations(data.totalDonations); // Asigna el total al estado
+      console.log(data.totalDonations)
       updateChartData(data.totalDonations); // Actualiza los datos de la gráfica
     } catch (error) {
       console.error('Error fetching total donations:', error);
     }
   };
 
-  // Función para actualizar los datos de la gráfica
-  const updateChartData = (newDonation) => {
+
+   // Función para actualizar los datos de la gráfica
+   const updateChartData = (newDonation) => {
     setDonationData((prevData) => {
       const updatedData = [...prevData, newDonation];
       return updatedData.slice(-10); // Mantén solo los últimos 10 puntos
     });
   };
 
+
+  const fetchDonationsWithDate = async () => {
+    try {
+      const response = await fetch('https://api-beta-mocha-59.vercel.app/fechaMontoDonaciones'); 
+      const data = await response.json();
+  
+      console.log( data.donations);
+    // Actualizar el estado con los datos obtenidos
+    setDonationData2(data.donations);
+
+    // Calcular el total de donaciones
+    const total = data.donations.reduce((sum, donation) => sum + donation.monto, 0);
+    setTotalDonations2(total);
+
+    } catch (error) {
+      console.error('Error fetching donations with date:', error);
+    }
+  };
+  
+
+  useEffect(() => {
+    fetchDonationsWithDate();
+
+    // Configurar un intervalo de 1 minuto (60000 ms)
+    const interval = setInterval(() => {
+      fetchDonationsWithDate();
+    }, 60000);
+
+    // Limpiar el intervalo cuando el componente se desmonte
+    return () => clearInterval(interval);
+  }, []);
+
+ 
   // Ejecutar la solicitud al montar el componente
   useEffect(() => {
     fetchTotalDonations();
@@ -150,20 +197,8 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // Configuración de los datos para Chart.js
-  const chartData = {
-    labels: donationData.map((_, index) => `T-${donationData.length - index}`), // Etiquetas dinámicas
-    datasets: [
-      {
-        label: 'Total Donaciones',
-        data: donationData,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        fill: true,
-        tension: 0.4, // Hace la gráfica más curva
-      },
-    ],
-  };
+
+
 
   // Configuración de opciones para la gráfica
   const chartOptions = {
@@ -188,7 +223,7 @@ export default function Home() {
   //------------------------------------------ Citas --------------------------------------
   const fetchServiceAverages = async () => {
     try {
-        const response = await fetch('http://localhost:3000/promedioCitas'); // Ruta de tu nueva API
+        const response = await fetch('https://api-beta-mocha-59.vercel.app/promedioCitas'); // Ruta de tu nueva API
         const data = await response.json();
         setServiceAverages(data.averages); // Asigna los datos al estado
     } catch (error) {
@@ -234,7 +269,7 @@ export default function Home() {
 
   const fetchContractTypeAverages = async () => {
     try {
-        const response = await fetch('http://localhost:3000/promedioTipoContrataciones'); // Ruta de tu nueva API
+        const response = await fetch('https://api-beta-mocha-59.vercel.app/promedioTipoContrataciones'); // Ruta de tu nueva API
         const data = await response.json();
         setContractTypeAverages(data.averages); // Asigna los datos al estado
     } catch (error) {
@@ -280,21 +315,18 @@ export default function Home() {
   return (
     <div className="grid xl:grid-cols-4 min-h-screen">
 
-      <main className="lg:col-span-3 xl:col-span-5 bg-red-100 p-8 h-full overflow-y-auto">
+      <main className="lg:col-span-3 xl:col-span-5 bg-white p-8 h-full overflow-y-auto">
         {/* Section 1 */}
         <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 mt-10 gap-4 ">
           {/* Card 1 */}
-          <div className="bg-red-700 p-8 rounded-xl text-gray-300 flex flex-col gap-6">
-            {/* Gráfica en lugar del ícono */}
-            <div className="h-40">
-              <Line data={chartData} options={chartOptions} />
-            </div>
-            <h4 className="text-2xl text-white">Donaciones</h4>
-            <span className="text-5xl text-white">{totalDonations !== null ? `$${totalDonations}` : 'Loading...'}</span>
-            <span className="py-1 px-3 bg-red-600/80 rounded-full">
-              + 10% since last month
-            </span>
+   {/* Card 1 con la nueva gráfica */}
+
+
+  
+      <div className="p-4 bg-white rounded-xl flex flex-col justify-between gap-4 drop-shadow-2xl ">
+      <AreaChartCallbackExample/>
           </div>
+
           {/* Card 2 */}
           <div className="p-4 bg-white rounded-xl flex flex-col justify-between gap-4 drop-shadow-2xl ">
             <div className="flex items-center gap-4 bg-red-700/10 rounded-xl p-4">
@@ -337,7 +369,9 @@ export default function Home() {
                     <Pie data={pieDataCitas} options={pieOptionsCitas} />
                   )}
                 </div>
+                <CitasEstadisticas/>
               </div>
+              
             </div>
           </div>
           <div>
@@ -350,6 +384,7 @@ export default function Home() {
                     <Pie data={pieDataContrataciones} options={pieOptionsContrataciones} />
                   )}
                 </div>
+                <ContratacionesGrafica/>
                 
               </div>
             </div>
