@@ -86,7 +86,21 @@ const TblContrataciones = () => {
         { title: 'Traslado', dataIndex: 'inicio_Traslado', key: 'inicio_Traslado', width: 200 },
         { title: 'Escala', dataIndex: 'escala', key: 'escala', width: 100 },
         { title: 'Fecha', dataIndex: 'fecha', key: 'fecha', render: formatDate, width: 150 },
-        { title: 'Estado', dataIndex: 'estado', key: 'estado', width: 100 },
+        { title: 'Estado', dataIndex: 'estado', key: 'estado', width: 100,
+            render: (text) => (
+                <span
+                    className={`estado-pill ${
+                        text === 'rechazada' ? 'estado-rechazada' :
+                        text === 'revision' ? 'estado-revision' :
+                        text === 'Realizada' ? 'estado-realizada' :
+                        text === 'aceptada' ? 'estado-aceptada' :
+                        text === 'Cancelado' ? 'estado-cancelado' : ''
+                    }`}
+                >
+                    {text}
+                </span>
+            ),
+        },
         {
             title: 'Acción',
             key: 'accion',

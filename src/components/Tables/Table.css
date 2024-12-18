@@ -132,3 +132,27 @@ text-align: center;
     background-color: #f8d7da; 
     color: #721c24; 
 }
+/*----------------------Estados de la contratacion---------------------*/
+.estado-rechazada {
+    background-color: #ffcccc; 
+    color: #721c24; 
+}
+
+.estado-revision {
+    background-color: #fff3cd; 
+    color: #fb5607; 
+}
+
+.estado-realizada {
+    background-color: #d4edda; 
+    color: #155724; 
+}
+
+.estado-aceptada {
+    background-color: #cce5ff; 
+    color: #004085; 
+}
+.estado-cancelado {
+    background-color: #e2e3e5; 
+    color: #6c757d; 
+}

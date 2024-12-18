@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import { message } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import { message, Button, Popconfirm  } from 'antd';
 import moment from 'moment';
-import '../Form/Form.css'
+//import '../Form/Form.css'
 
 const RegistroContrataciones = () => {
     const { ID_Contratacion } = useParams();
@@ -107,11 +108,28 @@ const RegistroContrataciones = () => {
         return <div>Cargando...</div>;
     }
 
-    
+    const handleFinalizarContratacion = async () => {
+        try {
+            const response = await fetch(`http://localhost:3000/ContratacionRealizada/${ID_Contratacion}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ estado: 'Realizada' }),
+            });
+
+            if (!response.ok) throw new Error('Error al finalizar la contratación');
+
+            message.success('Contratación finalizada con éxito');
+            navigate('/ContratacionAmbulancias'); // Redirigir al componente
+        } catch (error) {
+            console.error('Error al finalizar la contratación:', error);
+            message.error('Error al finalizar la contratación');
+        }
+    };
+
 
   return (
-    <div className="container_principal">
-        <div className="flex justify-center items-center min-h-screen bg-white-100 p-4">
+    <div className="">
+        <div className="flex justify-center items-center min-h-screen bg-white-100 p-4 mt-10">
             <div className="flex flex-col w-full max-w-5xl ">
                 <form className="w-full ">
                     <h3 className="text-[30px] text-red-800 mb-4" style={{ width: '100%', textAlign: 'center' }}>Detalle de Contratación de Ambulancia</h3>
@@ -188,6 +206,22 @@ const RegistroContrataciones = () => {
                         >
                             Rechazar Solicitud
                         </button>
+                        <Popconfirm
+                            title="Finalizar Contratación"
+                            description="¿Estas Seguro de finalizar la contratación?"
+                            icon={
+                            <QuestionCircleOutlined
+                                style={{
+                                color: 'red',
+                                }}
+                            />
+                            }
+                            onConfirm={handleFinalizarContratacion} 
+                        >
+                            <Button style={{background:'#FF0040', color:'#fff',height:'40px'}} 
+                                >Finalizar Contratación
+                            </Button>
+                        </Popconfirm>
                     </div>
                 </form>
                 <div className="w-full lg:w-1/3 flex justify-center items-center mt-4 lg:mt-0">
