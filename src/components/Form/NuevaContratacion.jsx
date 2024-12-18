@@ -33,7 +33,7 @@ const NuevaContratacion = () => {
     // Fetch tipos de contratación
     const fetchTiposContratacion = async () => {
       try {
-        const response = await fetch('http://localhost:3000/tipoContratacion');
+        const response = await fetch('https://api-beta-mocha-59.vercel.app/tipoContratacion');
         const data = await response.json();
         setTiposContratacion(data);
       } catch (error) {
@@ -44,7 +44,7 @@ const NuevaContratacion = () => {
     // Fetch asociados
     const fetchAsociados = async () => {
       try {
-        const response = await fetch('http://localhost:3000/personal');
+        const response = await fetch('https://api-beta-mocha-59.vercel.app/personal');
         const data = await response.json();
         setAsociados(data);
       } catch (error) {
@@ -55,7 +55,7 @@ const NuevaContratacion = () => {
     // Fetch ambulancias
     const fetchAmbulancias = async () => {
       try {
-        const response = await fetch('http://localhost:3000/ambulancias-disponiblesAdmin');
+        const response = await fetch('https://api-beta-mocha-59.vercel.app/ambulancias-disponiblesAdmin');
         if (!response.ok) {
           throw new Error('Error al cargar las ambulancias.');
         }
@@ -188,7 +188,7 @@ const NuevaContratacion = () => {
   
         console.log("Enviando payload:", payload); // Debugging
   
-        const response = await fetch("http://localhost:3000/CrearContratacionAdmin", {
+        const response = await fetch("https://api-beta-mocha-59.vercel.app/CrearContratacionAdmin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

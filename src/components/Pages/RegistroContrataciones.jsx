@@ -21,7 +21,7 @@ const RegistroContrataciones = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responseContratacion = await fetch(`http://localhost:3000/ContratacionAmbulancia/${ID_Contratacion}`);
+                const responseContratacion = await fetch(`https://api-beta-mocha-59.vercel.app/ContratacionAmbulancia/${ID_Contratacion}`);
                 if (!responseContratacion.ok) {
                     throw new Error('No se pudo obtener los datos de la contratación');
                 }
@@ -29,7 +29,7 @@ const RegistroContrataciones = () => {
                 console.log('Contratacion:', dataContratacion);
                 setContratacion(dataContratacion);
 
-                const responseAmbulancia = await fetch(`http://localhost:3000/ambulancia/${dataContratacion.AmbulanciaID}`);
+                const responseAmbulancia = await fetch(`https://api-beta-mocha-59.vercel.app/ambulancia/${dataContratacion.AmbulanciaID}`);
                 if (!responseAmbulancia.ok) {
                     throw new Error('No se pudo obtener los datos de la ambulancia');
                 }
@@ -37,7 +37,7 @@ const RegistroContrataciones = () => {
                 console.log('Ambulancia:', dataAmbulancia);
                 setAmbulancia(dataAmbulancia);
 
-                const responseTipoContratacion = await fetch(`http://localhost:3000/tipoContratacion/${dataContratacion.ID_Tipo_Contratacion}`);
+                const responseTipoContratacion = await fetch(`https://api-beta-mocha-59.vercel.app/tipoContratacion/${dataContratacion.ID_Tipo_Contratacion}`);
                 if (!responseTipoContratacion.ok) {
                     throw new Error('No se pudo obtener los datos del tipo de contratación');
                 }
@@ -81,7 +81,7 @@ const RegistroContrataciones = () => {
         console.log('Cuerpo de la solicitud:', body); // Asegúrate de que esto contiene los datos esperados
 
         try {
-            const response = await fetch(`http://localhost:3000/ContratacionAmbulancia/${ID_Contratacion}/estado`, {
+            const response = await fetch(`https://api-beta-mocha-59.vercel.app/ContratacionAmbulancia/${ID_Contratacion}/estado`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

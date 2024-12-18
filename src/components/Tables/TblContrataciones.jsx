@@ -14,7 +14,7 @@ const TblContrataciones = () => {
     const [ambulancias, setAmbulancias] = useState([]);
     const [tipoContratacion, setTipoContratacion] = useState([]);
 
-    const URLContratacion = 'http://localhost:3000/ContratacionAmbulancias';
+    const URLContratacion = 'https://api-beta-mocha-59.vercel.app/ContratacionAmbulancias';
     const URLAmbulancias = 'https://api-beta-mocha-59.vercel.app/Ambulancias';
     const URLTipoContratacion = 'https://api-beta-mocha-59.vercel.app/TipoContratacion';
 

@@ -21,7 +21,7 @@ const Suministros = () => {
     useEffect(() => {
       const fetchAsociados = async () => {
         try {
-          const response = await fetch('http://localhost:3000/personal');
+          const response = await fetch('https://api-beta-mocha-59.vercel.app/personal');
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
@@ -71,7 +71,7 @@ const Suministros = () => {
         };
     
         try {
-          const response = await fetch('http://localhost:3000/registrarSuministro', {
+          const response = await fetch('https://api-beta-mocha-59.vercel.app/registrarSuministro', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
